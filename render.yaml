@@ -1,0 +1,7 @@
+services:
+  - type: static
+    name: quasar-frontend
+    env: static
+    buildCommand: quasar build
+    staticPublishPath: dist/spa
+    branch: main
