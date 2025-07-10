@@ -28,7 +28,7 @@
                 color="white"
                 rounded
                 label="Learn More"
-                @click="$router.push('/about')"
+                @click="handleLearnMore"
               />
             </div>
           </div>
@@ -63,7 +63,7 @@
           >
             <q-card
               class="category-card cursor-pointer"
-              @click="$router.push(`/category/${category.slug}`)"
+              @click="$router.push('/login')"
             >
               <q-card-section class="text-center q-pa-lg">
                 <q-icon :name="category.icon" size="4rem" :color="category.color" class="q-mb-md" />
@@ -202,7 +202,7 @@
                   @keyup.enter="subscribeNewsletter"
                 />
               </div>
-              <div class="col-auto">
+              <div class="col-auto q-mt-lg">
                 <q-btn
                   color="white"
                   text-color="primary"
@@ -295,6 +295,14 @@ const goToShop = async () => {
   } else {
     await router.push('/products')
   }
+}
+
+const handleLearnMore = () => {
+  $q.notify({
+    type: 'info',
+    message: 'About section coming soon!',
+    position: 'top'
+  })
 }
 
 const subscribeNewsletter = async () => {

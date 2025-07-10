@@ -72,18 +72,16 @@
                   @click="showConfirmPassword = !showConfirmPassword" />
               </template>
             </q-input>
-
             <q-checkbox v-model="form.acceptTerms"
               :rules="[(val: string) => !!val || 'You must accept the terms and conditions']">
               <span class="text-body2">
                 I agree to the
-                <q-btn flat color="primary" label="Terms of Service" size="sm" @click="showTerms = true" />
+                <a class="text-primary cursor-pointer" @click.prevent="showTerms = true">Terms of Service</a>
                 and
-                <q-btn flat color="primary" label="Privacy Policy" size="sm" @click="showPrivacy = true" />
+                <a class="text-primary cursor-pointer" @click.prevent="showPrivacy = true">Privacy Policy</a>
               </span>
             </q-checkbox>
-
-            <q-btn type="submit" color="primary" class="full-width" size="lg" :loading="authStore.isLoading"
+            <q-btn type="submit" color="primary" class="q-mx-auto block" size="lg" :loading="authStore.isLoading"
               :disable="authStore.isLoading">
               Create Account
             </q-btn>
