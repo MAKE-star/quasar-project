@@ -85,12 +85,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { useQuasar } from 'quasar';
 import { useCartStore } from '../stores/cart';
 import { useAuthStore } from '../stores/auth';
-
+import { api } from 'boot/axios';
 
 type Product = {
   id: number;
@@ -112,7 +111,7 @@ const products = ref<Product[]>([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3000/products');
+    const response = await api.get('/products')
     products.value = response.data;
   } catch (error) {
     console.error('Failed to load products:', error);

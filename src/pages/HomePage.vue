@@ -224,7 +224,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
-import axios from 'axios'
+import { api } from 'boot/axios';
 import { useCartStore } from 'stores/cart'
 
 type Product = {
@@ -255,7 +255,7 @@ const featuredCategories = ref([
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:3000/products')
+    const res = await api.get('/products')
     featuredProducts.value = res.data.slice(0, 6)
   } catch (err) {
     console.error(err)
