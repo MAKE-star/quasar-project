@@ -2,7 +2,7 @@ import { boot } from 'quasar/wrappers'
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://quasar-backend-o2c9.onrender.com/',
 })
 
 export default boot(({ app }) => {
