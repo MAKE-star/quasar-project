@@ -37,7 +37,9 @@
     <q-page-container>
       <q-page class="q-pa-md bg-grey-1">
         <!-- Dashboard Title -->
-        <h1 class="text-h4 text-primary text-weight-bold q-mb-lg">Dashboard</h1>
+        <h1 class="text-h4 text-primary text-weight-bold q-mb-lg">
+          Welcome, {{ user?.first_name?.charAt(0).toUpperCase() + user?.first_name?.slice(1) || 'User' }}
+        </h1>
 
         <!-- Products Section -->
         <div class="q-mb-xl" v-if="showProducts">
@@ -63,15 +65,9 @@
                     </div>
                   </div>
                   <div class="q-mt-md">
-                    <q-btn
-                      color="primary"
-                      rounded
-                      icon="add_shopping_cart"
-                      label="Add to Cart"
-                      size="sm"
+                    <q-btn color="primary" rounded icon="add_shopping_cart" label="Add to Cart" size="sm"
                       @click="addToCart(product)"
-                      :disable="(product.stock_quantity ?? 0) === 0 || cartStore.getItemQuantity(product.id) > 0"
-                    />
+                      :disable="(product.stock_quantity ?? 0) === 0 || cartStore.getItemQuantity(product.id) > 0" />
                   </div>
                 </q-card-section>
               </q-card>
@@ -108,6 +104,7 @@ const leftDrawerOpen = ref(false);
 const showProducts = ref(true);
 
 const products = ref<Product[]>([]);
+const user = authStore.user;
 
 onMounted(async () => {
   try {
